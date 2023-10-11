@@ -7,3 +7,4 @@ from .lj_speech_dataset import LJSpeechDataset
 from .meta_dataset import MetaDataset
 from .wav_dataset import WAVDataset
 from .youtube_dataset import YoutubeDataset
+from .wav_td_dataset import WAVTDDataset
