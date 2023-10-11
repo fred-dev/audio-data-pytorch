@@ -134,7 +134,7 @@ class WAVTDDataset(Dataset):
             #check the entries in the JOSN file and look for one that matches the filename
             filename = os.path.splitext(os.path.basename(self.wavs[idx]))[0].replace("_P", "")
             
-            json_entry = next((item for item in self.json_data if item["filename"] == filename), None)
+            json_entry = next((item for item in self.JSONData if item["filename"] == filename), None)
             #get all the values from the JSON entry except for the filename
             cc_data = [
                 float(json_entry["normalized_latitude"]),
@@ -148,9 +148,9 @@ class WAVTDDataset(Dataset):
                 float(json_entry["normalized_minutes_of_day"]),
                 float(json_entry["normalized_day_of_year"])
             ]
+            ccData_tensor = torch.tensor(cc_data)
             
-            
-            return waveform, cc_data
+            return waveform, ccData_tensor
 
     def __len__(self) -> int:
         return len(self.wavs)
